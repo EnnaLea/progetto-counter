@@ -1,7 +1,7 @@
 # progetto-counter
  semplice counter
 
- ## Istruzioni
+ ## Instructions
 
 1. Open the `index.html` file in your preferred browser.
 
