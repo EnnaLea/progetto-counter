@@ -1,6 +1,7 @@
 const plusButton = document.querySelector('.plus');
 const minusButton = document.querySelector('.minus');
-const counter = document.querySelector('.counter')
+const resetButton = document.querySelector('.reset');
+const counter = document.querySelector('.counter');
 
 //funzione per aumentare il counter
 plusButton.addEventListener('click', () => {
@@ -11,7 +12,13 @@ plusButton.addEventListener('click', () => {
 //funzione per decrementare il counter
 minusButton.addEventListener('click', () => {
     let currentValue = parseInt(counter.textContent);
-    if(currentValue > 0){
         counter.textContent = currentValue - 1;
-    }
+    
 })
+
+//funzione per resettare il valore a 0
+resetButton.addEventListener('click', () => {
+    let currentValue = parseInt(counter.textContent);
+    counter.textContent = 0;
+})
+
