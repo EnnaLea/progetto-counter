@@ -4,6 +4,8 @@
  ## Link: 
  https://ennalea.github.io/progetto-counter/
 
+ https://peaceful-gingersnap-c9eab5.netlify.app
+
  ## Style 
  I have used the framework Bootstrap to implement the styling.
  Link:
