@@ -1,41 +1,58 @@
-const divContainer = document.querySelector(".container");
-const plusButton = document.querySelector(".plus");
-const minusButton = document.querySelector(".minus");
-const resetButton = document.querySelector(".reset");
-const counter = document.querySelector(".counter");
+const divAllContainer = document.querySelector(".container")
+const divContainer = document.querySelector(".containerButton");
 
-// Creazione del pulsante di incremento
-let incrementButton = document.createElement("button");
-incrementButton.className = "btn btn-info btn-lg plus";
-incrementButton.textContent = "+";
-divContainer.append(incrementButton);
+// Funzione unica creazione elementi DOM dinamicamente
+const incrementButton = createButton("+", "btn btn-info btn-lg plus", "plus");
+const counterButton = createCounter("counter", "0");
+const decrementButton = createButton("-", "btn btn-info btn-lg minus", "minus");
+const resetButton = createButton("RESET", "btn btn-secondary", "reset"); 
 
-//Creazione del div counter
-let counterButton = document.createElement("div");
-counterButton.className = "counter";
-counterButton.textContent = "0";
-divContainer.append(counterButton);
+divContainer.append(incrementButton, counterButton, decrementButton);
+divAllContainer.append(resetButton);
 
-// Creazione del pulsante di decremento
-let decrementButton = document.createElement("button");
-decrementButton.className = "btn btn-info btn-lg minus";
-decrementButton.textContent = "-";
-divContainer.append(decrementButton);
 
-//funzione per aumentare il counter
-plusButton.addEventListener("click", () => {
-  let currentValue = parseInt(counter.textContent);
-  counter.textContent = currentValue + 1;
+// Funzione per creare un pulsante
+function createButton(text, className, id) {
+  let button = document.createElement("button");
+  button.className = className;
+  button.textContent = text;
+  button.id = id;
+  return button;
+}
+
+// Funzione per creare il div del counter
+function createCounter(className, text) {
+  let counterDiv = document.createElement("div");
+  counterDiv.className = className;
+  counterDiv.textContent = text;
+  return counterDiv;
+}
+
+
+// Aggiunta di un listener al genitore usando event delegation
+divAllContainer.addEventListener("click", (e) => {
+  const target = e.target;
+  const counter = document.querySelector(".counter");
+
+  if (target.tagName === "BUTTON") {
+    
+    let currentValue = parseInt(counter.textContent);
+
+    switch (target.id) {
+      case "plus":
+        counter.textContent = currentValue + 1;
+        break;
+      case "minus":
+        counter.textContent = currentValue - 1;
+        break;
+      case "reset":
+        counter.textContent = 0;
+        break;  
+ 
+    }
+  }
 });
 
-//funzione per decrementare il counter
-minusButton.addEventListener("click", () => {
-  let currentValue = parseInt(counter.textContent);
-  counter.textContent = currentValue - 1;
-});
 
-//funzione per resettare il valore a 0
-resetButton.addEventListener("click", () => {
-  let currentValue = parseInt(counter.textContent);
-  counter.textContent = 0;
-});
+
+
