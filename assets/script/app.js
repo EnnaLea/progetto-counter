@@ -1,15 +1,14 @@
-const divAllContainer = document.querySelector(".container")
+const divAllContainer = document.querySelector(".container");
 const divContainer = document.querySelector(".containerButton");
 
 // Funzione unica creazione elementi DOM dinamicamente
 const incrementButton = createButton("+", "btn btn-info btn-lg plus", "plus");
 const counterButton = createCounter("counter", "0");
 const decrementButton = createButton("-", "btn btn-info btn-lg minus", "minus");
-const resetButton = createButton("RESET", "btn btn-secondary", "reset"); 
+const resetButton = createButton("RESET", "btn btn-secondary", "reset");
 
 divContainer.append(incrementButton, counterButton, decrementButton);
 divAllContainer.append(resetButton);
-
 
 // Funzione per creare un pulsante
 function createButton(text, className, id) {
@@ -28,14 +27,12 @@ function createCounter(className, text) {
   return counterDiv;
 }
 
-
 // Aggiunta di un listener al genitore usando event delegation
 divAllContainer.addEventListener("click", (e) => {
   const target = e.target;
   const counter = document.querySelector(".counter");
 
   if (target.tagName === "BUTTON") {
-    
     let currentValue = parseInt(counter.textContent);
 
     switch (target.id) {
@@ -47,12 +44,7 @@ divAllContainer.addEventListener("click", (e) => {
         break;
       case "reset":
         counter.textContent = 0;
-        break;  
- 
+        break;
     }
   }
 });
-
-
-
-
